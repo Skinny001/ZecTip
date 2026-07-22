@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZecTip — Shielded Tips for Creators</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<meta name="description" content="Generate a shielded ZEC tip button for your website.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="logo-zec">Z</span>
+    ZecTip
+  </a>
+  <a href="#generate" class="nav-cta">Create your widget →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+
+  <div class="hero-badge">powered by Zcash shielded transactions</div>
+
+  <h1>Accept tips with<br><span class="accent">full privacy.</span></h1>
+
+  <p class="hero-sub">
+    Generate a shielded ZEC tip button in seconds. Embed it on your website, blog, or portfolio — let supporters tip you privately, with a personal memo.
+  </p>
+
+  <div class="hero-actions">
+    <a href="#generate" class="btn-primary">
+      ⚡ Create your tip button
+    </a>
+    <a href="#how" class="btn-ghost">How it works</a>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">shielded</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">0%</div>
+      <div class="stat-label">platform fee</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">30s</div>
+      <div class="stat-label">to go live</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">∞</div>
+      <div class="stat-label">embeds</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how">
+  <div class="section-tag">how it works</div>
+  <h2 class="section-title">Three steps to start receiving private tips</h2>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01 —</div>
+      <div class="step-icon">📋</div>
+      <h3>Enter your details</h3>
+      <p>Paste your Zcash address, pick your button colors, and write a thank-you memo. Supporters tip any amount they choose.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02 —</div>
+      <div class="step-icon">🔗</div>
+      <h3>Get your embed code</h3>
+      <p>Copy the generated HTML snippet or script tag. No account needed, no backend, no setup — just paste and go.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03 —</div>
+      <div class="step-icon">💛</div>
+      <h3>Receive shielded tips</h3>
+      <p>Supporters scan the QR with any Zcash wallet. The memo travels privately inside the shielded transaction.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- GENERATOR -->
+<section id="generate">
+  <div class="gen-wrap">
+    <div class="section-tag">widget generator</div>
+    <h2 class="section-title">Build your tip button</h2>
+
+    <div class="gen-grid">
+
+      <!-- FORM -->
+      <div class="gen-form">
+
+        <div class="field-group">
+          <label>your name / page name</label>
+          <input type="text" id="g-name" placeholder="e.g. Buy me a coffee" value="Buy me a coffee" oninput="liveUpdate()">
+        </div>
+
+        <div class="field-group">
+          <label>ZEC address (z-addr or t-addr)</label>
+          <input type="text" id="g-addr" placeholder="zs1... or t1..." value="zs1exampleaddressreplacewithyourownzcashshieldedaddresshere000000000000000000000000000000" oninput="liveUpdate()">
+          <div id="addr-hint" style="font-size:11px;margin-top:4px;font-family:var(--font-mono);min-height:16px;"></div>
+        </div>
+
+        <div class="field-group">
+          <label>button label</label>
+          <input type="text" id="g-label" placeholder="Tip me in ZEC" value="⚡ Tip me in ZEC" oninput="liveUpdate()">
+        </div>
+
+        <div class="field-row">
+          <div class="field-group">
+            <label>button color</label>
+            <div class="color-field">
+              <input type="color" id="g-color" value="#f4b942" oninput="liveUpdate()">
+              <span id="g-color-hex">#f4b942</span>
+            </div>
+          </div>
+          <div class="field-group">
+            <label>text color</label>
+            <div class="color-field">
+              <input type="color" id="g-tcolor" value="#0c0c0d" oninput="liveUpdate()">
+              <span id="g-tcolor-hex">#0c0c0d</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="field-group">
+          <label>memo for your supporters</label>
+          <textarea id="g-memo" placeholder="Thanks for supporting my work! 🙏">Thanks for supporting my work!</textarea>
+        </div> -->
+
+
+        <div class="field-group">
+          <label>memo for your supporters</label>
+          <textarea id="g-memo" placeholder="Thanks for supporting my work! 🙏" oninput="liveUpdate()">Thanks for supporting my work!</textarea>
+          <div id="memo-hint" style="font-size:11px;margin-top:4px;font-family:var(--font-mono);min-height:16px;"></div>
+        </div>
+
+        <button class="gen-btn" onclick="generateWidget()">Generate widget ↗</button>
+      </div>
+
+      <!-- PREVIEW + CODE -->
+      <div class="preview-panel">
+
+        <!-- LIVE WIDGET PREVIEW -->
+        <div class="widget-preview">
+          <div class="widget-label">live preview</div>
+
+          <div>
+            <div style="font-size:13px; color:var(--muted); margin-bottom:10px;">
+              support <span id="prev-name" style="color:var(--text); font-weight:500;">Buy me a coffee</span>
+            </div>
+            <button class="tip-button" id="prev-btn" onclick="togglePreviewQR()" style="background:#f4b942; color:#0c0c0d;">
+              ⚡ Tip me in ZEC
+            </button>
+          </div>
+
+          <div class="qr-container" id="qr-wrap">
+            <div class="qr-box">
+              <img id="qr-img" width="160" height="160" alt="QR code" style="display:block;border-radius:0;">
+            </div>
+            <div class="addr-mono" id="prev-addr"></div>
+            <div class="memo-text" id="prev-memo"></div>
+            <div class="shield-badge">🔒 shielded transaction</div>
+            <div style="font-size:11px; color:var(--subtle); font-family:var(--font-mono);">scan with your Zcash wallet</div>
+          </div>
+
+          <div id="qr-hint" style="font-size:12px; color:var(--subtle); font-family:var(--font-mono);">↑ click to preview QR</div>
+        </div>
+
+        <!-- CODE OUTPUT -->
+        <div class="code-panel">
+          <div class="code-tabs">
+            <div class="code-tab active" onclick="switchCodeTab('html', this)">HTML snippet</div>
+            <div class="code-tab" onclick="switchCodeTab('script', this)">script tag</div>
+          </div>
+          <div class="code-body active" id="tab-html"></div>
+          <div class="code-body" id="tab-script"></div>
+          <div class="code-footer">
+            <button class="copy-btn" id="copy-btn" onclick="copyCode()">
+              📋 copy code
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHY ZCASH -->
+<section class="section">
+  <div class="section-tag">why zcash</div>
+  <h2 class="section-title">Privacy isn't a feature — it's the foundation</h2>
+
+  <div class="features">
+    <div class="feature">
+      <span class="feature-icon">🔒</span>
+      <h3>Shielded by default</h3>
+      <p>Z-addresses use zk-SNARKs to hide sender, receiver, and amount. Supporters tip you without exposing their wallet history.</p>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">💬</span>
+      <h3>Encrypted memos</h3>
+      <p>Supporters can leave you a private note alongside their tip. Only you, the recipient, can read it — it lives inside the shielded transaction.</p>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">🌐</span>
+      <h3>No middleman</h3>
+      <p>Unlike Ko-fi or Patreon, ZecTip is purely client-side. No accounts, no fees, no platform risk. Your funds go straight to your wallet.</p>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">📦</span>
+      <h3>Embeds anywhere</h3>
+      <p>HTML, Ghost, Substack, personal portfolio — if it accepts HTML, it accepts your ZecTip button. One snippet, infinite placements.</p>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">📱</span>
+      <h3>QR-first UX</h3>
+      <p>The ZEC URI standard is supported by all major Zcash wallets. Scan, confirm, done — no copy-pasting long addresses.</p>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">⚡</span>
+      <h3>Open source</h3>
+      <p>Built for a university blockchain class. All code is open, auditable, and free to fork. Contribute on GitHub.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <span class="logo-zec">Z</span>
+    ZecTip
+  </div>
+  <div class="footer-note">built on Zcash · no backend · no fees · your keys, your tips</div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
