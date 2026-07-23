@@ -27,7 +27,7 @@ A client-side widget generator that lets creators embed a "Tip me in ZEC" button
 
 ## Quick Start
 
-1. Open [zectip.app](https://zectip.app)
+1. Open [zec-tip.app](https://zec-tip.vercel.app/)
 2. Enter your Zcash address (zs1... or t1...)
 3. Customize colors and label
 4. Copy the embed code
